@@ -95,9 +95,12 @@ Image.prototype.parseUrl = function(request){
   // not mess things up
   parts[parts.length - 1] = this.image;
 
-  // if there is a modifier string remove it
-  if (this.modifiers.hasModStr) {
-    parts.shift();
+  //only seek out modifiers if we have 2 or more 'directories'
+  if(parts.length >= 2) {
+    // if there is a modifier string remove it
+    if (this.modifiers.hasModStr) {
+      parts.shift();
+    }
   }
 
   this.path = parts.join('/');
